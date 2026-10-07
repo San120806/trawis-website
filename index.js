@@ -79,12 +79,14 @@ app.get('/demo', (req, res) => {
 });
 
 
-// Register new routes for blog and admin
+// Register routes for blog, admin, and api
 const adminRouter = require('./routes/admin');
 const blogRouter = require('./routes/blog');
+const apiRouter = require('./routes/api');
 
 app.use('/admin', adminRouter);
 app.use('/resources/blog', blogRouter);
+app.use('/api', apiRouter);
 
 app.use((req, res) => {
   res.status(404).render('404', { title: 'Page not found' });

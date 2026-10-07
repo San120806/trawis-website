@@ -202,3 +202,111 @@ copyEmailButtons.forEach((button) => {
     }
   });
 });
+
+/* =========================================================================
+   Book a Meet / Energy Trading Week Modal AJAX Handler
+   ========================================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const bookMeetingForm = document.getElementById("bookMeetingForm");
+  const meetingFormStatus = document.getElementById("meetingFormStatus");
+  const btnSubmitMeeting = document.getElementById("btnSubmitMeeting");
+  const meetingFormContainer = document.getElementById("meetingFormContainer");
+  const meetingSuccessContainer = document.getElementById("meetingSuccessContainer");
+  const modalHeaderContent = document.getElementById("modalHeaderContent");
+
+  if (bookMeetingForm) {
+    bookMeetingForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // Form validation
+      if (!bookMeetingForm.checkValidity()) {
+        e.stopPropagation();
+        bookMeetingForm.classList.add("was-validated");
+        return;
+      }
+
+      // Collect data
+      const formData = new FormData(bookMeetingForm);
+      const payload = Object.fromEntries(formData.entries());
+
+      // Loading state
+      btnSubmitMeeting.disabled = true;
+      const btnText = btnSubmitMeeting.querySelector(".btn-text");
+      const btnSpinner = btnSubmitMeeting.querySelector(".spinner-border");
+      if (btnText) btnText.textContent = "Transmitting to sales@bluwis.com...";
+      if (btnSpinner) btnSpinner.classList.remove("d-none");
+      if (meetingFormStatus) {
+        meetingFormStatus.classList.add("d-none");
+        meetingFormStatus.className = "alert d-none mt-3 mb-0";
+      }
+
+      try {
+        const response = await fetch("/api/book-meeting", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          // Display success state inside modal
+          if (modalHeaderContent) {
+            modalHeaderContent.classList.add("d-none");
+          }
+
+          if (meetingFormContainer && meetingSuccessContainer) {
+            const leadNameSpan = document.getElementById("successLeadName");
+            const leadEmailSpan = document.getElementById("successLeadEmail");
+            if (leadNameSpan) leadNameSpan.textContent = payload.name;
+            if (leadEmailSpan) leadEmailSpan.textContent = payload.email;
+
+            meetingFormContainer.classList.add("d-none");
+            meetingSuccessContainer.classList.remove("d-none");
+          }
+          bookMeetingForm.reset();
+          bookMeetingForm.classList.remove("was-validated");
+        } else {
+          // Show error alert
+          if (meetingFormStatus) {
+            meetingFormStatus.textContent = result.message || "Failed to submit request. Please try again.";
+            meetingFormStatus.className = "alert alert-danger mt-3 mb-0";
+            meetingFormStatus.classList.remove("d-none");
+          }
+        }
+      } catch (err) {
+        console.error("Booking submission error:", err);
+        if (meetingFormStatus) {
+          meetingFormStatus.textContent = "Network error. Please try again or reach out to sales@bluwis.com directly.";
+          meetingFormStatus.className = "alert alert-danger mt-3 mb-0";
+          meetingFormStatus.classList.remove("d-none");
+        }
+      } finally {
+        btnSubmitMeeting.disabled = false;
+        if (btnText) btnText.textContent = "Confirm & Book Meeting";
+        if (btnSpinner) btnSpinner.classList.add("d-none");
+      }
+    });
+
+    // Reset modal view when dismissed
+    const bookMeetingModalEl = document.getElementById("bookMeetingModal");
+    if (bookMeetingModalEl) {
+      bookMeetingModalEl.addEventListener("hidden.bs.modal", () => {
+        if (modalHeaderContent) {
+          modalHeaderContent.classList.remove("d-none");
+        }
+        if (meetingFormContainer && meetingSuccessContainer) {
+          meetingFormContainer.classList.remove("d-none");
+          meetingSuccessContainer.classList.add("d-none");
+        }
+        if (meetingFormStatus) {
+          meetingFormStatus.classList.add("d-none");
+        }
+        bookMeetingForm.reset();
+        bookMeetingForm.classList.remove("was-validated");
+      });
+    }
+  }
+});

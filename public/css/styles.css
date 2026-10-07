@@ -3255,6 +3255,287 @@ p {
   padding: 0;
 }
 
+/* =========================================================================
+   Hero Slide 4: Energy Trading Week Americas 2026
+   ========================================================================= */
+
+.hero-slide-etwa {
+  background-position: center right;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero-carousel-overlay-etwa {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    rgba(20, 15, 25, 0.88) 0%,
+    rgba(28, 18, 36, 0.65) 42%,
+    rgba(35, 20, 45, 0.25) 75%,
+    rgba(20, 15, 25, 0.05) 100%
+  );
+}
+
+.hero-carousel-glow-etwa {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  z-index: 1;
+  width: 44rem;
+  height: 44rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(169, 70, 245, 0.2) 0%, rgba(255, 196, 0, 0.08) 50%, transparent 70%);
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+/* Floating ETW Event Badge (Top Right) */
+.etwa-badge-corner {
+  position: absolute;
+  top: 125px;
+  right: 15px;
+  z-index: 4;
+}
+
+.etwa-badge-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+}
+
+.etwa-badge-text {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  font-family: 'Montserrat', var(--font-heading), sans-serif;
+  font-weight: 900;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.etwa-text-energy {
+  font-size: 1.35rem;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.etwa-text-trading {
+  font-size: 1.35rem;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  display: block;
+}
+
+.etwa-text-americas {
+  font-size: 1.48rem;
+  color: #009fe3;
+  letter-spacing: 0.06em;
+  display: block;
+}
+
+.etwa-badge-chevrons {
+  height: 70px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
+}
+
+/* ETW Slide Typography & Elements */
+.hero-carousel-content-etwa {
+  max-width: 980px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow-etwa {
+  color: #ffc400 !important;
+  font-family: 'Montserrat', var(--font-heading), sans-serif;
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
+  display: block;
+}
+
+.hero-title-etwa,
+.hero-title-etwa span,
+.hero-title-etwa .hero-title-line-1,
+.hero-title-etwa .hero-title-line-2,
+.hero-title-etwa .hero-brand-name {
+  font-family: 'Montserrat', var(--font-heading), sans-serif !important;
+  color: #ffffff !important;
+}
+
+.hero-title-etwa {
+  font-size: clamp(2.1rem, 3.75vw, 3.5rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.18 !important;
+  letter-spacing: -0.025em;
+  margin-bottom: 2.2rem !important;
+  max-width: 1140px;
+}
+
+.hero-title-line-1 {
+  display: block;
+}
+
+@media (min-width: 992px) {
+  .hero-title-line-1 {
+    white-space: nowrap;
+  }
+}
+
+.hero-title-line-2 {
+  display: block;
+  white-space: normal;
+}
+
+@media (min-width: 768px) {
+  .hero-title-line-2 {
+    white-space: nowrap;
+  }
+}
+
+.hero-brand-name {
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap !important;
+}
+
+.hero-brand-w {
+  display: inline-flex;
+  align-items: baseline;
+  position: relative;
+  background: transparent !important;
+}
+
+.hero-brand-w-img {
+  height: 1.1em;
+  width: auto;
+  display: inline-block;
+  vertical-align: -0.13em;
+  margin: 0 0.02em;
+  background: transparent !important;
+  filter: drop-shadow(0 2px 8px rgba(255, 196, 0, 0.3));
+}
+
+/* Action Buttons */
+.hero-actions-etwa {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.btn-hero-pill-primary {
+  background-color: #ffc400 !important;
+  border: 1px solid #ffc400 !important;
+  color: #000000 !important;
+  font-family: 'Montserrat', var(--font-heading), sans-serif;
+  font-weight: 800 !important;
+  font-size: 1.05rem !important;
+  padding: 0.88rem 2.3rem !important;
+  border-radius: 999px !important;
+  box-shadow: 0 10px 25px rgba(255, 196, 0, 0.28);
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-hero-pill-primary:hover {
+  background-color: #ffd447 !important;
+  border-color: #ffd447 !important;
+  color: #000000 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(255, 196, 0, 0.4);
+}
+
+.btn-hero-pill-glass {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.32) !important;
+  color: #ffffff !important;
+  font-family: 'Montserrat', var(--font-heading), sans-serif;
+  font-weight: 700 !important;
+  font-size: 1.05rem !important;
+  padding: 0.88rem 2.3rem !important;
+  border-radius: 999px !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-hero-pill-glass:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border-color: rgba(255, 255, 255, 0.65) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .etwa-badge-corner {
+    position: static;
+    margin-bottom: 2rem;
+    display: inline-block;
+  }
+
+  .hero-slide-etwa {
+    background-position: center;
+  }
+
+  .hero-carousel-content-etwa {
+    padding-top: 1rem !important;
+  }
+
+  .hero-title-etwa {
+    font-size: clamp(2.2rem, 6vw, 3.2rem) !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .etwa-text-energy,
+  .etwa-text-trading {
+    font-size: 1.08rem;
+  }
+
+  .etwa-text-americas {
+    font-size: 1.18rem;
+  }
+
+  .etwa-badge-chevrons {
+    height: 52px;
+  }
+
+  .hero-title-etwa {
+    font-size: clamp(1.85rem, 8vw, 2.5rem) !important;
+    margin-bottom: 1.8rem !important;
+  }
+
+  .hero-actions-etwa {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-hero-pill-primary,
+  .btn-hero-pill-glass {
+    width: 100%;
+    padding: 0.8rem 1.5rem !important;
+  }
+}
+
+
 .source-marker {
   position: relative;
   top: -0.3em;
@@ -4299,4 +4580,117 @@ p {
     width: 135px;
     height: 135px;
   }
+}
+
+/* =========================================================================
+   In-Place Glassmorphic Modal: Book a Meet
+   ========================================================================= */
+
+.glassmorphic-modal .modal-dialog {
+  max-width: 680px;
+}
+
+.glassmorphic-modal-content {
+  background: rgba(22, 17, 28, 0.94) !important;
+  backdrop-filter: blur(28px) !important;
+  -webkit-backdrop-filter: blur(28px) !important;
+  border: 1px solid rgba(255, 196, 0, 0.22) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), 0 0 40px rgba(255, 196, 0, 0.08) !important;
+  color: #ffffff;
+  padding: 1.25rem;
+}
+
+.modal-badge-tag {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 196, 0, 0.12);
+  border: 1px solid rgba(255, 196, 0, 0.35);
+  color: #ffc400;
+  font-family: 'Montserrat', var(--font-heading), sans-serif;
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+}
+
+.modal-subtitle {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.68) !important;
+}
+
+.form-label-glass {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.form-control-glass {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  color: #ffffff !important;
+  border-radius: 10px !important;
+  padding: 0.75rem 1rem !important;
+  font-size: 0.95rem !important;
+  transition: all 0.25s ease !important;
+}
+
+.form-control-glass::placeholder {
+  color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.form-control-glass:focus {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: #ffc400 !important;
+  box-shadow: 0 0 0 0.25rem rgba(255, 196, 0, 0.2) !important;
+  color: #ffffff !important;
+}
+
+.form-control-glass.is-invalid,
+.was-validated .form-control-glass:invalid {
+  border-color: #ff5252 !important;
+}
+
+.invalid-feedback {
+  font-size: 0.78rem;
+  color: #ff8080;
+}
+
+.success-icon-wrap {
+  animation: pulseSuccess 2s infinite;
+  filter: drop-shadow(0 0 24px rgba(255, 196, 0, 0.45));
+}
+
+@keyframes pulseSuccess {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.success-details-card {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 196, 0, 0.25) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  max-width: 560px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.success-lead-highlight {
+  color: #f7f4fc !important;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.success-lead-subtext {
+  color: rgba(247, 244, 252, 0.8) !important;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  font-weight: 400;
 }

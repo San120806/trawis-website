@@ -43,6 +43,13 @@
         data-bs-slide-to="2"
         aria-label="Slide 3"
       ></button>
+
+      <button
+        type="button"
+        data-bs-target="#trawisHeroCarousel"
+        data-bs-slide-to="3"
+        aria-label="Slide 4"
+      ></button>
     </div>
 
     <div class="carousel-inner">
@@ -165,6 +172,66 @@
 
                     <a href="/demo" class="btn btn-ghost btn-lg">
                       Schedule a Demo
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4: ENERGY TRADING WEEK AMERICAS -->
+      <div class="carousel-item">
+        <div
+          class="hero-carousel-slide hero-slide-etwa"
+          style="background-image: url('/assets/Ultra-Premium Tech Hero Banner (169) (1).jpg');"
+        >
+          <div class="hero-carousel-overlay hero-carousel-overlay-etwa"></div>
+          <div class="hero-carousel-glow hero-carousel-glow-etwa"></div>
+
+          <div class="container hero-carousel-container position-relative">
+            <!-- ETW Event Badge (Top Right) -->
+            <div class="etwa-badge-corner animate-up delay-2">
+              <div class="etwa-badge-content">
+                <div class="etwa-badge-text">
+                  <span class="etwa-text-energy">ENERGY</span>
+                  <span class="etwa-text-trading">TRADING WEEK</span>
+                  <span class="etwa-text-americas">AMERICAS</span>
+                </div>
+                <img
+                  src="/assets/etw-chevrons-clean.png"
+                  alt="Energy Trading Week Americas"
+                  class="etwa-badge-chevrons"
+                >
+              </div>
+            </div>
+
+            <div class="row align-items-center min-vh-hero">
+              <div class="col-lg-12 col-xl-11">
+                <div class="hero-carousel-content hero-carousel-content-etwa">
+                  <div class="eyebrow hero-eyebrow-etwa animate-up">
+                    THE FUTURE OF TRADE INTELLIGENCE
+                  </div>
+
+                  <h2 class="hero-title hero-title-etwa animate-up delay-1">
+                    <span class="hero-title-line-1">BluWis Introduces <span class="hero-brand-name">Tra<span class="hero-brand-w"><img src="/assets/trawis-w-glyph.png?v=2" alt="W" class="hero-brand-w-img"></span>is</span> at Energy</span>
+                    <span class="hero-title-line-2">Trading Week Americas 2026</span>
+                  </h2>
+
+                  <div class="hero-actions hero-actions-etwa animate-up delay-2">
+                    <a
+                      href="#bookMeetingModal"
+                      data-bs-toggle="modal"
+                      data-bs-target="#bookMeetingModal"
+                      class="btn btn-hero-pill-primary"
+                      id="btnHeroBookMeet"
+                    >
+                      Schedule a Meeting
+                    </a>
+
+                    <a href="/contact" class="btn btn-hero-pill-glass">
+                      Contact Us
                     </a>
                   </div>
                 </div>
@@ -920,6 +987,183 @@
         </div>
       </div>
     </section>
+
+    <!-- =========================================================================
+         IN-PLACE GLASSMORPHIC MODAL: BOOK A MEET (ETW AMERICAS / SAP SAPPHIRE STYLE)
+         ========================================================================= -->
+    <div
+      class="modal fade glassmorphic-modal"
+      id="bookMeetingModal"
+      tabindex="-1"
+      aria-labelledby="bookMeetingModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content glassmorphic-modal-content">
+          <!-- MODAL HEADER -->
+          <div class="modal-header border-0 pb-0 d-flex justify-content-between align-items-start">
+            <div id="modalHeaderContent">
+              <div class="modal-badge-tag mb-2">
+                <i class="bi bi-calendar-event me-1"></i> Energy Trading Week Americas 2026
+              </div>
+              <h3 class="modal-title font-heading fw-bold text-white" id="bookMeetingModalLabel">
+                Book a Meet with TraWis &amp; BluWis
+              </h3>
+              <p class="modal-subtitle mb-0">
+                Connect with our team to discuss predictive energy pricing, automated CTRM risk intelligence, and live pilot deployments.
+              </p>
+            </div>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <!-- MODAL BODY -->
+          <div class="modal-body pt-4">
+            <!-- FORM CONTAINER -->
+            <div id="meetingFormContainer">
+              <form id="bookMeetingForm" novalidate>
+                <input type="hidden" name="eventSource" value="Energy Trading Week Americas 2026">
+
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="meetName" class="form-label-glass">Full Name <span class="text-warning">*</span></label>
+                    <input
+                      type="text"
+                      class="form-control form-control-glass"
+                      id="meetName"
+                      name="name"
+                      placeholder="e.g. Alex Morgan"
+                      required
+                    >
+                    <div class="invalid-feedback">Please provide your full name.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="meetCompany" class="form-label-glass">Company <span class="text-warning">*</span></label>
+                    <input
+                      type="text"
+                      class="form-control form-control-glass"
+                      id="meetCompany"
+                      name="company"
+                      placeholder="e.g. Trafigura / BP / Vitol"
+                      required
+                    >
+                    <div class="invalid-feedback">Please provide your company name.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="meetJobTitle" class="form-label-glass">Job Title / Role <span class="text-warning">*</span></label>
+                    <input
+                      type="text"
+                      class="form-control form-control-glass"
+                      id="meetJobTitle"
+                      name="jobTitle"
+                      placeholder="e.g. Head of Gas Trading, Risk Lead"
+                      required
+                    >
+                    <div class="invalid-feedback">Please provide your role or job title.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="meetEmail" class="form-label-glass">Work Email <span class="text-warning">*</span></label>
+                    <input
+                      type="email"
+                      class="form-control form-control-glass"
+                      id="meetEmail"
+                      name="email"
+                      placeholder="e.g. alex.morgan@company.com"
+                      required
+                    >
+                    <div class="invalid-feedback">Please provide a valid work email address.</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label for="meetPhone" class="form-label-glass">Phone Number <span class="text-warning">*</span></label>
+                    <input
+                      type="tel"
+                      class="form-control form-control-glass"
+                      id="meetPhone"
+                      name="phone"
+                      placeholder="e.g. +1 (713) 555-0199"
+                      required
+                    >
+                    <div class="invalid-feedback">Please provide your phone number.</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label for="meetNotes" class="form-label-glass">
+                      What would you like to discuss? <span class="text-muted fw-normal">(Optional)</span>
+                    </label>
+                    <textarea
+                      class="form-control form-control-glass"
+                      id="meetNotes"
+                      name="notes"
+                      rows="3"
+                      placeholder="e.g. ETRM/CRTM workflows, custom desk pilots, predictive pricing engine demo, etc."
+                    ></textarea>
+                  </div>
+                </div>
+
+                <!-- ALERT STATUS -->
+                <div id="meetingFormStatus" class="alert d-none mt-3 mb-0" role="alert"></div>
+
+                <!-- SUBMIT BUTTON -->
+                <div class="mt-4">
+                  <button
+                    type="submit"
+                    id="btnSubmitMeeting"
+                    class="btn btn-hero-pill-primary w-100 py-3 d-flex align-items-center justify-content-center gap-2"
+                  >
+                    <span class="btn-text">Confirm &amp; Book Meeting</span>
+                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                    <i class="bi bi-arrow-right"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- SUCCESS STATE -->
+            <div id="meetingSuccessContainer" class="d-none text-center py-4 px-2 animate-up">
+              <div class="success-icon-wrap mb-3">
+                <i class="bi bi-check-circle-fill text-warning" style="font-size: 3.8rem;"></i>
+              </div>
+              <div class="modal-badge-tag mb-3">
+                <i class="bi bi-calendar-check me-1"></i> Energy Trading Week Americas 2026
+              </div>
+              <h3 class="font-heading fw-bold text-white mb-3" style="font-size: 1.85rem; letter-spacing: -0.02em;">
+                Meeting Request Confirmed!
+              </h3>
+              
+              <div class="success-details-card mb-4 mx-auto p-4 rounded-4 text-center">
+                <p class="success-lead-highlight mb-3">
+                  Thank you, <span id="successLeadName" class="text-white fw-bold"></span>! Your meeting request has been dispatched directly to
+                  <span class="text-warning fw-bold">sales@bluwis.com</span>.
+                </p>
+                <p class="success-lead-subtext mb-0">
+                  A representative from the BluWis &amp; TraWis team will follow up at
+                  <span id="successLeadEmail" class="text-white fw-bold"></span> to coordinate calendar and meeting logistics.
+                </p>
+              </div>
+
+              <div class="d-flex justify-content-center gap-3">
+                <button
+                  type="button"
+                  class="btn btn-hero-pill-primary px-5 py-2"
+                  data-bs-dismiss="modal"
+                  style="min-width: 180px;"
+                >
+                  Close Window
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   <%- include('partials/footer') %>
