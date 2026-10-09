@@ -18,15 +18,18 @@ if (!fs.existsSync(fallbackFile)) {
 /**
  * Saves a meeting request both in PostgreSQL and locally in JSON fallback
  */
-async function saveMeetingRequest({ name, company, jobTitle, email, phone, notes, eventSource }) {
+async function saveMeetingRequest({ name, company, jobTitle, email, phone, notes, eventSource, preferredDate, preferredTimeSlot }) {
   const timestamp = new Date().toISOString();
+  const slotText = (preferredDate && preferredTimeSlot) ? `${preferredDate} • ${preferredTimeSlot}` : (notes || '');
   const record = {
     name,
     company,
     jobTitle,
     email,
     phone,
-    notes: notes || '',
+    preferred_date: preferredDate || '',
+    preferred_time_slot: preferredTimeSlot || '',
+    notes: slotText,
     eventSource: eventSource || 'Energy Trading Week Americas 2026',
     created_at: timestamp
   };

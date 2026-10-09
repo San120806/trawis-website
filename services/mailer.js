@@ -67,7 +67,7 @@ async function sendMeetingNotification(data) {
         </table>
         ${notes ? `
         <div class="notes-box">
-          <strong style="display: block; font-size: 12px; text-transform: uppercase; color: #ffc400; margin-bottom: 6px;">Discussion Topic / Notes</strong>
+          <strong style="display: block; font-size: 12px; text-transform: uppercase; color: #ffc400; margin-bottom: 6px;">Preferred Date &amp; Time Slot</strong>
           <span style="color: #e3dbe8; font-size: 14px; white-space: pre-wrap;">${notes}</span>
         </div>
         ` : ''}

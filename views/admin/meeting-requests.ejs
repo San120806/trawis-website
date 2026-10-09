@@ -82,8 +82,8 @@
                   <th style="width: 22%;">Prospect &amp; Company</th>
                   <th style="width: 18%;">Job Title</th>
                   <th style="width: 22%;">Contact Info</th>
-                  <th style="width: 24%;">Discussion Topic</th>
-                  <th style="width: 14%;">Date</th>
+                  <th style="width: 26%;">Preferred Date &amp; Time Slot</th>
+                  <th style="width: 12%;">Submitted</th>
                 </tr>
               </thead>
               <tbody>
@@ -113,12 +113,13 @@
                       </div>
                     </td>
                     <td>
-                      <% if (item.notes) { %>
-                        <div class="text-secondary" style="font-size: 0.85rem; line-height: 1.4; max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="<%= item.notes %>">
-                          <%= item.notes %>
+                      <% if (item.preferred_date || item.preferred_time_slot || item.notes) { %>
+                        <div class="fw-semibold text-dark" style="font-size: 0.85rem; line-height: 1.4;">
+                          <i class="bi bi-calendar2-check text-warning me-1"></i>
+                          <%= item.preferred_date && item.preferred_time_slot ? (item.preferred_date + ' • ' + item.preferred_time_slot) : (item.notes || item.preferred_date || item.preferred_time_slot) %>
                         </div>
                       <% } else { %>
-                        <span class="text-muted fst-italic" style="font-size: 0.8rem;">No notes specified</span>
+                        <span class="text-muted fst-italic" style="font-size: 0.8rem;">Not specified</span>
                       <% } %>
                     </td>
                     <td class="text-muted" style="font-size: 0.82rem;">

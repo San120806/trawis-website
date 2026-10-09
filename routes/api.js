@@ -9,7 +9,7 @@ const { sendMeetingNotification } = require('../services/mailer');
  */
 router.post('/book-meeting', async (req, res) => {
   try {
-    const { name, company, jobTitle, email, phone, notes, eventSource } = req.body;
+    const { name, company, jobTitle, email, phone, notes, eventSource, preferredDate, preferredTimeSlot } = req.body;
 
     // Validation
     if (!name || !company || !jobTitle || !email || !phone) {
@@ -19,14 +19,28 @@ router.post('/book-meeting', async (req, res) => {
       });
     }
 
-    // Basic email format check
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    // Strict email format check
+    const emailStrictRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailStrictRegex.test(email.trim())) {
       return res.status(400).json({
         success: false,
-        message: 'Please enter a valid work email address.'
+        message: 'Please enter a valid work email address (e.g. name@company.com).'
       });
     }
+
+    // Strict phone number format check: must have country code (+) and strictly 10 digits
+    const cleanPhone = phone.trim();
+    const phoneStrictRegex = /^\+[1-9]\d{0,3}\s?[0-9]{10}$/;
+    if (!phoneStrictRegex.test(cleanPhone)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Please provide a valid phone number with country code and strictly 10 digits (e.g. +1 7135550199).'
+      });
+    }
+
+    const formattedNotes = notes 
+      ? notes.trim() 
+      : (preferredDate && preferredTimeSlot ? `${preferredDate} • ${preferredTimeSlot}` : (preferredDate || preferredTimeSlot || ''));
 
     const payload = {
       name: name.trim(),
@@ -34,7 +48,9 @@ router.post('/book-meeting', async (req, res) => {
       jobTitle: jobTitle.trim(),
       email: email.trim().toLowerCase(),
       phone: phone.trim(),
-      notes: notes ? notes.trim() : '',
+      preferredDate: preferredDate ? preferredDate.trim() : '',
+      preferredTimeSlot: preferredTimeSlot ? preferredTimeSlot.trim() : '',
+      notes: formattedNotes,
       eventSource: eventSource ? eventSource.trim() : 'Energy Trading Week Americas 2026'
     };
 

@@ -4656,9 +4656,78 @@ p {
   border-color: #ff5252 !important;
 }
 
+select.form-control-glass,
+select.form-select.form-control-glass {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffc400' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 1rem center !important;
+  background-size: 14px 10px !important;
+  padding-right: 2.6rem !important;
+  cursor: pointer;
+}
+
+select.form-control-glass:focus,
+select.form-select.form-control-glass:focus {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: #ffc400 !important;
+  box-shadow: 0 0 0 0.25rem rgba(255, 196, 0, 0.2) !important;
+  color: #ffffff !important;
+}
+
+select.form-control-glass option {
+  background-color: #171322 !important;
+  color: #ffffff !important;
+  padding: 10px 14px !important;
+}
+
+select.form-control-glass option:disabled {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
 .invalid-feedback {
   font-size: 0.78rem;
   color: #ff8080;
+}
+
+/* Phone Input Group Styles */
+.phone-input-group {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  width: 100% !important;
+}
+
+.phone-input-group > .country-code-select {
+  flex: 0 0 150px !important;
+  max-width: 150px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.14) !important;
+  font-size: 0.88rem !important;
+  padding: 0.75rem 0.6rem !important;
+  background-position: right 0.6rem center !important;
+}
+
+.phone-input-group > .phone-number-input {
+  flex: 1 1 auto !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  letter-spacing: 0.04em !important;
+}
+
+.phone-input-group > .country-code-select:focus,
+.phone-input-group > .phone-number-input:focus {
+  z-index: 4 !important;
+}
+
+.phone-input-group .invalid-feedback {
+  width: 100% !important;
+  margin-top: 0.35rem !important;
+}
+
+.form-control-glass.is-valid,
+.was-validated .form-control-glass:valid {
+  border-color: rgba(76, 217, 100, 0.65) !important;
 }
 
 .success-icon-wrap {

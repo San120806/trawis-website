@@ -213,21 +213,120 @@ document.addEventListener("DOMContentLoaded", () => {
   const meetingFormContainer = document.getElementById("meetingFormContainer");
   const meetingSuccessContainer = document.getElementById("meetingSuccessContainer");
   const modalHeaderContent = document.getElementById("modalHeaderContent");
+  const meetEmail = document.getElementById("meetEmail");
+  const meetPhone = document.getElementById("meetPhone");
+  const meetCountryCode = document.getElementById("meetCountryCode");
+  const emailFeedback = document.getElementById("emailFeedback");
+  const phoneFeedback = document.getElementById("phoneFeedback");
+
+  const emailStrictRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  function validateEmailField() {
+    if (!meetEmail) return true;
+    const val = meetEmail.value.trim();
+    if (!val) {
+      meetEmail.setCustomValidity("Please provide your work email address.");
+      if (emailFeedback) emailFeedback.textContent = "Please provide your work email address.";
+      return false;
+    }
+    if (!emailStrictRegex.test(val)) {
+      meetEmail.setCustomValidity("Please enter a valid work email address (e.g. name@company.com).");
+      if (emailFeedback) emailFeedback.textContent = "Please enter a valid work email address (e.g. name@company.com).";
+      return false;
+    }
+    meetEmail.setCustomValidity("");
+    return true;
+  }
+
+  function validatePhoneField() {
+    if (!meetPhone) return true;
+    const raw = meetPhone.value.trim();
+    const digits = raw.replace(/\D/g, "");
+    meetPhone.value = digits;
+    if (!digits) {
+      meetPhone.setCustomValidity("Please provide your phone number.");
+      if (phoneFeedback) phoneFeedback.textContent = "Please provide your phone number.";
+      return false;
+    }
+    if (digits.length !== 10) {
+      meetPhone.setCustomValidity("Phone number must be strictly 10 digits.");
+      if (phoneFeedback) phoneFeedback.textContent = `Phone number must be strictly 10 digits (currently ${digits.length}/10).`;
+      return false;
+    }
+    meetPhone.setCustomValidity("");
+    return true;
+  }
+
+  if (meetEmail) {
+    meetEmail.addEventListener("keydown", (e) => {
+      if (e.key === " ") e.preventDefault();
+    });
+    meetEmail.addEventListener("input", () => {
+      meetEmail.value = meetEmail.value.replace(/\s/g, "");
+      validateEmailField();
+    });
+    meetEmail.addEventListener("blur", () => {
+      validateEmailField();
+    });
+  }
+
+  if (meetPhone) {
+    meetPhone.addEventListener("input", () => {
+      meetPhone.value = meetPhone.value.replace(/\D/g, "").slice(0, 10);
+      validatePhoneField();
+    });
+    meetPhone.addEventListener("paste", (e) => {
+      e.preventDefault();
+      const pasteData = (e.clipboardData || window.clipboardData).getData("text") || "";
+      const trimmed = pasteData.trim();
+      if (trimmed.startsWith("+") && meetCountryCode) {
+        const match = trimmed.match(/^\+(\d{1,4})[\s.-]?(\d{10})$/);
+        if (match) {
+          const code = "+" + match[1];
+          const opt = Array.from(meetCountryCode.options).find(o => o.value === code);
+          if (opt) meetCountryCode.value = opt.value;
+          meetPhone.value = match[2];
+          validatePhoneField();
+          return;
+        }
+      }
+      const digits = pasteData.replace(/\D/g, "");
+      meetPhone.value = digits.slice(-10);
+      validatePhoneField();
+    });
+    meetPhone.addEventListener("blur", () => {
+      validatePhoneField();
+    });
+  }
 
   if (bookMeetingForm) {
     bookMeetingForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
+      const emailValid = validateEmailField();
+      const phoneValid = validatePhoneField();
+
       // Form validation
-      if (!bookMeetingForm.checkValidity()) {
+      if (!bookMeetingForm.checkValidity() || !emailValid || !phoneValid) {
         e.stopPropagation();
         bookMeetingForm.classList.add("was-validated");
+        if (!emailValid && meetEmail) meetEmail.focus();
+        else if (!phoneValid && meetPhone) meetPhone.focus();
         return;
       }
 
       // Collect data
       const formData = new FormData(bookMeetingForm);
       const payload = Object.fromEntries(formData.entries());
+
+      // Format strictly combined phone number with country code
+      const selectedCountryCode = payload.countryCode || (meetCountryCode ? meetCountryCode.value : "+1");
+      const phoneDigits = (payload.phoneNumber || meetPhone.value || "").trim().replace(/\D/g, "");
+      payload.phone = `${selectedCountryCode} ${phoneDigits}`;
+
+      if (payload.preferredDate && payload.preferredTimeSlot) {
+        payload.notes = `${payload.preferredDate} • ${payload.preferredTimeSlot}`;
+      }
 
       // Loading state
       btnSubmitMeeting.disabled = true;
