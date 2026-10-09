@@ -3402,26 +3402,25 @@ p {
 }
 
 .hero-brand-name {
-  display: inline-flex;
-  align-items: baseline;
+  display: inline;
   white-space: nowrap !important;
 }
 
 .hero-brand-w {
-  display: inline-flex;
-  align-items: baseline;
+  display: inline-block;
   position: relative;
+  vertical-align: baseline;
   background: transparent !important;
 }
 
 .hero-brand-w-img {
-  height: 1.1em;
+  height: 0.82em;
   width: auto;
   display: inline-block;
-  vertical-align: -0.13em;
+  vertical-align: -0.065em;
   margin: 0 0.02em;
   background: transparent !important;
-  filter: drop-shadow(0 2px 8px rgba(255, 196, 0, 0.3));
+  filter: drop-shadow(0 2px 8px rgba(255, 196, 0, 0.28));
 }
 
 /* Action Buttons */
