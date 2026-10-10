@@ -6,7 +6,13 @@ const SENDER_EMAIL = process.env.SMTP_FROM || process.env.SMTP_USER || 'no-reply
 
 // Initialize transporter
 function getTransporter() {
-  if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
+  if (
+    process.env.SMTP_HOST &&
+    process.env.SMTP_USER &&
+    process.env.SMTP_PASS &&
+    process.env.SMTP_PASS !== 'PASTE_APP_PASSWORD_HERE' &&
+    process.env.SMTP_PASS.trim() !== ''
+  ) {
     return nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: parseInt(process.env.SMTP_PORT || '587', 10),
@@ -14,7 +20,10 @@ function getTransporter() {
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS
-      }
+      },
+      connectionTimeout: 5000,
+      greetingTimeout: 5000,
+      socketTimeout: 5000
     });
   }
   return null;
