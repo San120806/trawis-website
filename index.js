@@ -39,6 +39,10 @@ app.get('/', (req, res) => {
   res.render('index', { title: null });
 });
 
+app.get('/product', (req, res) => {
+  res.render('product', { title: 'Product' });
+});
+
 app.get('/product/platform', (req, res) => {
   res.render('product', { title: 'Product' });
 });
