@@ -35,6 +35,7 @@ function getTransporter() {
 async function sendMeetingNotification(data) {
   const { name, company, jobTitle, email, phone, notes, eventSource } = data;
   const event = eventSource || 'Energy Trading Week Americas 2026';
+  const isDemo = event.toLowerCase().includes('demo');
   const submissionTime = new Date().toLocaleString('en-US', { timeZoneName: 'short' });
 
   const salesHtml = `
@@ -61,8 +62,8 @@ async function sendMeetingNotification(data) {
     <div class="container">
       <div class="header">
         <span class="tag">${event}</span>
-        <h1 class="title" style="margin-top: 10px;">New Meeting Request Received</h1>
-        <p style="color: #c7bed4; font-size: 14px; margin: 0;">A prospect has requested a meeting with the BluWis & TraWis team.</p>
+        <h1 class="title" style="margin-top: 10px;">${isDemo ? 'New Demo Request Received' : 'New Meeting Request Received'}</h1>
+        <p style="color: #c7bed4; font-size: 14px; margin: 0;">${isDemo ? 'A prospect has requested a product demonstration with the BluWis & TraWis team.' : 'A prospect has requested a meeting with the BluWis & TraWis team.'}</p>
       </div>
       <div class="content">
         <table class="lead-table">
@@ -71,12 +72,12 @@ async function sendMeetingNotification(data) {
           <tr><th>Job Title / Role</th><td>${jobTitle}</td></tr>
           <tr><th>Work Email</th><td><a href="mailto:${email}">${email}</a></td></tr>
           <tr><th>Phone Number</th><td><a href="tel:${phone}">${phone}</a></td></tr>
-          <tr><th>Event Source</th><td>${event}</td></tr>
+          <tr><th>Source / Event</th><td>${event}</td></tr>
           <tr><th>Submitted At</th><td>${submissionTime}</td></tr>
         </table>
         ${notes ? `
         <div class="notes-box">
-          <strong style="display: block; font-size: 12px; text-transform: uppercase; color: #ffc400; margin-bottom: 6px;">Preferred Date &amp; Time Slot</strong>
+          <strong style="display: block; font-size: 12px; text-transform: uppercase; color: #ffc400; margin-bottom: 6px;">Details / Preferred Time</strong>
           <span style="color: #e3dbe8; font-size: 14px; white-space: pre-wrap;">${notes}</span>
         </div>
         ` : ''}
@@ -108,12 +109,12 @@ async function sendMeetingNotification(data) {
     <div class="container">
       <div class="header">
         <h1 class="title">TraWis &bull; Trade Intelligence</h1>
-        <p style="color: #ffc400; font-weight: 600; font-size: 14px; margin: 0;">Meeting Request Received</p>
+        <p style="color: #ffc400; font-weight: 600; font-size: 14px; margin: 0;">${isDemo ? 'Product Demo Request Received' : 'Meeting Request Received'}</p>
       </div>
       <div class="content">
         <p>Hi <strong>${name}</strong>,</p>
-        <p>Thank you for reaching out to connect with the <strong>TraWis</strong> team for <strong>${event}</strong>.</p>
-        <p>We have successfully received your meeting details for <strong>${company}</strong>. Our enterprise sales team will review your request and get back to you promptly to confirm a dedicated time.</p>
+        <p>Thank you for reaching out to connect with the <strong>TraWis</strong> team${isDemo ? ' for a product demo' : ` for <strong>${event}</strong>`}.</p>
+        <p>We have successfully received your details for <strong>${company}</strong>. Our enterprise sales team will review your inquiry and follow up promptly to coordinate your schedule.</p>
         <p>If you have any immediate questions in the meantime, feel free to reply directly to this email or reach us at <a href="mailto:${SALES_EMAIL}" style="color: #1a1622; font-weight: 700;">${SALES_EMAIL}</a>.</p>
         <p style="margin-top: 24px;">Warm regards,<br><strong>The BluWis & TraWis Team</strong></p>
       </div>
@@ -133,7 +134,7 @@ async function sendMeetingNotification(data) {
       const salesInfo = await transporter.sendMail({
         from: `"TraWis Trade Intelligence" <${SENDER_EMAIL}>`,
         to: SALES_EMAIL,
-        subject: `[Meeting Request - ${event}] ${name} from ${company}`,
+        subject: `[${isDemo ? 'Demo Request' : 'Meeting Request'} - ${event}] ${name} from ${company}`,
         html: salesHtml,
         replyTo: email
       });

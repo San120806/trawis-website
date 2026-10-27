@@ -33,16 +33,26 @@
 
           <div class="col-lg-6">
             <div class="product-visual-wrap animate-up delay-2">
-              <div class="browser-card hero-demo-card">
+              <div class="browser-card hero-demo-card" id="platformVideoFrame">
                 <div class="browser-dots">
                   <span></span><span></span><span></span>
                 </div>
 
-                <img
-                  src="/assets/traderpersona.jpeg"
-                  alt="TraWis Trader Persona Workspace"
-                  class="img-fluid product-demo-img"
-                >
+                <div class="video-wrapper position-relative">
+                  <video
+                    id="platformVideoPlayer"
+                    class="img-fluid product-demo-img product-demo-video w-100"
+                    poster="/assets/traderpersona.jpeg"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto"
+                  >
+                    <source src="/assets/TraWis_Launch_Film_55s_v8_no_captions.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
               </div>
             </div>
           </div>

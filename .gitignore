@@ -147,4 +147,9 @@ admin-setup.json
 
 # Ignore user uploaded cover images but keep the gitkeep
 /public/uploads/*
-!/public/uploads/.gitkeep
+!/public/uploads/.gitkeep
+
+# macOS & backup files
+.DS_Store
+**/.DS_Store
+*.bak

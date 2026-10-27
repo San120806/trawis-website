@@ -408,4 +408,286 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   }
+
+  /* =========================================================================
+     Schedule a Demo Modal AJAX Handler (TraWis by BluWis)
+     ========================================================================= */
+  const scheduleDemoForm = document.getElementById("scheduleDemoForm");
+  const demoFormStatus = document.getElementById("demoFormStatus");
+  const btnSubmitDemo = document.getElementById("btnSubmitDemo");
+  const demoFormContainer = document.getElementById("demoFormContainer");
+  const demoSuccessContainer = document.getElementById("demoSuccessContainer");
+  const demoModalHeaderContent = document.getElementById("demoModalHeaderContent");
+  const demoEmail = document.getElementById("demoEmail");
+  const demoPhone = document.getElementById("demoPhone");
+  const demoCountryCode = document.getElementById("demoCountryCode");
+  const demoEmailFeedback = document.getElementById("demoEmailFeedback");
+  const demoPhoneFeedback = document.getElementById("demoPhoneFeedback");
+
+  function validateDemoEmailField() {
+    if (!demoEmail) return true;
+    const val = demoEmail.value.trim();
+    if (!val) {
+      demoEmail.setCustomValidity("Please provide your work email address.");
+      if (demoEmailFeedback) demoEmailFeedback.textContent = "Please provide your work email address.";
+      return false;
+    }
+    if (!emailStrictRegex.test(val)) {
+      demoEmail.setCustomValidity("Please enter a valid work email address (e.g. name@company.com).");
+      if (demoEmailFeedback) demoEmailFeedback.textContent = "Please enter a valid work email address (e.g. name@company.com).";
+      return false;
+    }
+    demoEmail.setCustomValidity("");
+    return true;
+  }
+
+  function validateDemoPhoneField() {
+    if (!demoPhone) return true;
+    const raw = demoPhone.value.trim();
+    const digits = raw.replace(/\D/g, "");
+    demoPhone.value = digits;
+    if (!digits) {
+      demoPhone.setCustomValidity("Please provide your phone number.");
+      if (demoPhoneFeedback) demoPhoneFeedback.textContent = "Please provide your phone number.";
+      return false;
+    }
+    if (digits.length !== 10) {
+      demoPhone.setCustomValidity("Phone number must be strictly 10 digits.");
+      if (demoPhoneFeedback) demoPhoneFeedback.textContent = `Phone number must be strictly 10 digits (currently ${digits.length}/10).`;
+      return false;
+    }
+    demoPhone.setCustomValidity("");
+    return true;
+  }
+
+  if (demoEmail) {
+    demoEmail.addEventListener("keydown", (e) => {
+      if (e.key === " ") e.preventDefault();
+    });
+    demoEmail.addEventListener("input", () => {
+      demoEmail.value = demoEmail.value.replace(/\s/g, "");
+      validateDemoEmailField();
+    });
+    demoEmail.addEventListener("blur", () => {
+      validateDemoEmailField();
+    });
+  }
+
+  if (demoPhone) {
+    demoPhone.addEventListener("input", () => {
+      demoPhone.value = demoPhone.value.replace(/\D/g, "").slice(0, 10);
+      validateDemoPhoneField();
+    });
+    demoPhone.addEventListener("paste", (e) => {
+      e.preventDefault();
+      const pasteData = (e.clipboardData || window.clipboardData).getData("text") || "";
+      const trimmed = pasteData.trim();
+      if (trimmed.startsWith("+") && demoCountryCode) {
+        const match = trimmed.match(/^\+(\d{1,4})[\s.-]?(\d{10})$/);
+        if (match) {
+          const code = "+" + match[1];
+          const opt = Array.from(demoCountryCode.options).find(o => o.value === code);
+          if (opt) demoCountryCode.value = opt.value;
+          demoPhone.value = match[2];
+          validateDemoPhoneField();
+          return;
+        }
+      }
+      const digits = pasteData.replace(/\D/g, "");
+      demoPhone.value = digits.slice(-10);
+      validateDemoPhoneField();
+    });
+    demoPhone.addEventListener("blur", () => {
+      validateDemoPhoneField();
+    });
+  }
+
+  if (scheduleDemoForm) {
+    scheduleDemoForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const emailValid = validateDemoEmailField();
+      const phoneValid = validateDemoPhoneField();
+
+      if (!scheduleDemoForm.checkValidity() || !emailValid || !phoneValid) {
+        e.stopPropagation();
+        scheduleDemoForm.classList.add("was-validated");
+        if (!emailValid && demoEmail) demoEmail.focus();
+        else if (!phoneValid && demoPhone) demoPhone.focus();
+        return;
+      }
+
+      const formData = new FormData(scheduleDemoForm);
+      const payload = Object.fromEntries(formData.entries());
+
+      const selectedCountryCode = payload.countryCode || (demoCountryCode ? demoCountryCode.value : "+1");
+      const phoneDigits = (payload.phoneNumber || demoPhone.value || "").trim().replace(/\D/g, "");
+      payload.phone = `${selectedCountryCode} ${phoneDigits}`;
+
+      btnSubmitDemo.disabled = true;
+      const btnText = btnSubmitDemo.querySelector(".btn-text");
+      const btnSpinner = btnSubmitDemo.querySelector(".spinner-border");
+      if (btnText) btnText.textContent = "Transmitting to sales@bluwis.com...";
+      if (btnSpinner) btnSpinner.classList.remove("d-none");
+      if (demoFormStatus) {
+        demoFormStatus.classList.add("d-none");
+        demoFormStatus.className = "alert d-none mt-3 mb-0";
+      }
+
+      try {
+        const response = await fetch("/api/book-meeting", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          if (demoModalHeaderContent) {
+            demoModalHeaderContent.classList.add("d-none");
+          }
+
+          if (demoFormContainer && demoSuccessContainer) {
+            const leadNameSpan = document.getElementById("demoSuccessLeadName");
+            const leadEmailSpan = document.getElementById("demoSuccessLeadEmail");
+            if (leadNameSpan) leadNameSpan.textContent = payload.name;
+            if (leadEmailSpan) leadEmailSpan.textContent = payload.email;
+
+            demoFormContainer.classList.add("d-none");
+            demoSuccessContainer.classList.remove("d-none");
+          }
+          scheduleDemoForm.reset();
+          scheduleDemoForm.classList.remove("was-validated");
+        } else {
+          if (demoFormStatus) {
+            demoFormStatus.textContent = result.message || "Failed to submit request. Please try again.";
+            demoFormStatus.className = "alert alert-danger mt-3 mb-0";
+            demoFormStatus.classList.remove("d-none");
+          }
+        }
+      } catch (err) {
+        console.error("Demo submission error:", err);
+        if (demoFormStatus) {
+          demoFormStatus.textContent = "Network error. Please try again or reach out to sales@bluwis.com directly.";
+          demoFormStatus.className = "alert alert-danger mt-3 mb-0";
+          demoFormStatus.classList.remove("d-none");
+        }
+      } finally {
+        btnSubmitDemo.disabled = false;
+        if (btnText) btnText.textContent = "Confirm & Schedule Demo";
+        if (btnSpinner) btnSpinner.classList.add("d-none");
+      }
+    });
+
+    const scheduleDemoModalEl = document.getElementById("scheduleDemoModal");
+    if (scheduleDemoModalEl) {
+      scheduleDemoModalEl.addEventListener("hidden.bs.modal", () => {
+        if (demoModalHeaderContent) {
+          demoModalHeaderContent.classList.remove("d-none");
+        }
+        if (demoFormContainer && demoSuccessContainer) {
+          demoFormContainer.classList.remove("d-none");
+          demoSuccessContainer.classList.add("d-none");
+        }
+        if (demoFormStatus) {
+          demoFormStatus.classList.add("d-none");
+        }
+        scheduleDemoForm.reset();
+        scheduleDemoForm.classList.remove("was-validated");
+      });
+    }
+  }
+
+  /* =========================================================================
+     Platform Video Modal Handler
+     ========================================================================= */
+  const platformVideoModalEl = document.getElementById("platformVideoModal");
+  if (platformVideoModalEl) {
+    const modalVideo = document.getElementById("modalPlatformVideo");
+    platformVideoModalEl.addEventListener("shown.bs.modal", () => {
+      if (modalVideo) {
+        modalVideo.play().catch(() => {});
+      }
+    });
+    platformVideoModalEl.addEventListener("hidden.bs.modal", () => {
+      if (modalVideo && !modalVideo.paused) {
+        modalVideo.pause();
+      }
+    });
+
+    // Auto-open modal if requested via hash
+    if (window.location.hash === "#platformVideoModal" && typeof bootstrap !== "undefined") {
+      setTimeout(() => {
+        const modalInstance = bootstrap.Modal.getOrCreateInstance(platformVideoModalEl);
+        modalInstance.show();
+      }, 350);
+    }
+  }
+
+  /* =========================================================================
+     Smooth High-Performance Product Hero Video Player
+     - Permanent Muted Audio
+     - Continuous Loop
+     - Pause on Mouse Hover / Resume on Mouse Leave
+     - Pause offscreen for 60fps performance
+     ========================================================================= */
+  const platformVideo = document.getElementById("platformVideoPlayer");
+  const platformVideoFrame = document.getElementById("platformVideoFrame") || (platformVideo ? platformVideo.closest(".browser-card") : null);
+
+  if (platformVideo) {
+    // 1. Keep audio strictly muted and video looping
+    platformVideo.muted = true;
+    platformVideo.loop = true;
+    platformVideo.playsInline = true;
+
+    // 2. Pause video when mouse hovers over that part, resume when mouse leaves
+    let isHovering = false;
+    let isOffscreen = false;
+    const hoverTarget = platformVideoFrame || platformVideo;
+
+    hoverTarget.addEventListener("mouseenter", () => {
+      isHovering = true;
+      platformVideo.pause();
+    });
+
+    hoverTarget.addEventListener("mouseleave", () => {
+      isHovering = false;
+      if (!isOffscreen) {
+        platformVideo.play().catch(() => {});
+      }
+    });
+
+    // Direct tap/click toggles playback as well
+    platformVideo.addEventListener("click", () => {
+      if (platformVideo.paused) {
+        platformVideo.play().catch(() => {});
+      } else {
+        platformVideo.pause();
+      }
+    });
+
+    // 3. IntersectionObserver: pause when offscreen, resume when in view
+    if ("IntersectionObserver" in window) {
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            isOffscreen = false;
+            if (!isHovering) {
+              platformVideo.play().catch(() => {});
+            }
+          } else {
+            isOffscreen = true;
+            if (!platformVideo.paused) {
+              platformVideo.pause();
+            }
+          }
+        });
+      }, { threshold: 0.15 });
+
+      videoObserver.observe(platformVideo);
+    }
+  }
 });

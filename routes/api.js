@@ -9,7 +9,7 @@ const { sendMeetingNotification } = require('../services/mailer');
  */
 router.post('/book-meeting', async (req, res) => {
   try {
-    const { name, company, jobTitle, email, phone, notes, eventSource, preferredDate, preferredTimeSlot } = req.body;
+    const { name, company, jobTitle, email, phone, notes, eventSource, preferredDate, preferredTimeSlot, interest } = req.body;
 
     // Validation
     if (!name || !company || !jobTitle || !email || !phone) {
@@ -38,9 +38,11 @@ router.post('/book-meeting', async (req, res) => {
       });
     }
 
-    const formattedNotes = notes 
-      ? notes.trim() 
-      : (preferredDate && preferredTimeSlot ? `${preferredDate} • ${preferredTimeSlot}` : (preferredDate || preferredTimeSlot || ''));
+    const slotPart = (preferredDate && preferredTimeSlot ? `${preferredDate} • ${preferredTimeSlot}` : (preferredDate || preferredTimeSlot || ''));
+    const interestPart = interest ? `Focus: ${interest.trim()}` : '';
+    const formattedNotes = notes
+      ? notes.trim()
+      : [interestPart, slotPart].filter(Boolean).join(' | ');
 
     const payload = {
       name: name.trim(),

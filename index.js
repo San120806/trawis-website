@@ -53,6 +53,10 @@ app.get('/product/solutions', (req, res) => {
   });
 });
 
+app.get('/solutions', (req, res) => {
+  res.redirect('/product/solutions');
+});
+
 app.get('/about', (req, res) => {
   res.render('about', { title: 'About Us' });
 });
