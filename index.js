@@ -73,6 +73,14 @@ app.get('/coming-soon', (req, res) => {
   res.render('coming_soon', { title: 'Coming Soon' });
 });
 
+app.get('/resources/announcements', (req, res) => {
+  res.render('announcements', { title: 'Announcements' });
+});
+
+app.get('/announcements', (req, res) => {
+  res.redirect('/resources/announcements');
+});
+
 app.get('/resources/faq', (req, res) => {
   res.render('coming_soon', { title: 'FAQ' });
 });

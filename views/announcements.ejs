@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body>
+
+  <%- include('partials/header') %>
+
+  <main>
+    <!-- =========================================================================
+         ANNOUNCEMENTS HERO (MATCHES BRAND SPECIFICATION)
+         ========================================================================= -->
+    <section class="section section-dark announcements-hero">
+      <div class="announcements-hero-glow"></div>
+
+      <div class="container position-relative" style="z-index: 2;">
+        <div class="row align-items-center gy-5">
+          <div class="col-lg-7">
+            <span class="announcements-kicker animate-up">
+              TRAWIS BY BLUWIS &middot; ANNOUNCEMENTS
+            </span>
+
+            <h1 class="announcements-title animate-up delay-1">
+              What's New at TraWis
+            </h1>
+
+            <p class="announcements-subtitle animate-up delay-2">
+              Stay up to date with the latest product launches, platform developments, company milestones, and events shaping the future of energy trading.
+            </p>
+
+            <div class="hero-actions animate-up delay-3">
+              <a href="#announcements-feed" class="btn btn-announcements-explore">
+                Explore Announcements &rarr;
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="announcements-spotlight-card animate-up delay-2">
+              <div class="spotlight-badge">
+                <span class="spotlight-pulse"></span>
+                <span>Flagship Announcement</span>
+              </div>
+              
+              <h4 class="font-heading fw-bold text-white mb-2" style="font-size: 1.35rem; line-height: 1.35;">
+                BluWis Introduces TraWis at Energy Trading Week Americas 2026
+              </h4>
+              
+              <p class="text-white-50 mb-3" style="font-size: 0.92rem; line-height: 1.6;">
+                Unveiling our unified AI-powered trade intelligence layer with live technical walkthroughs at Booth #20 in Houston.
+              </p>
+
+              <div class="d-flex align-items-center justify-content-between pt-2 border-top border-secondary">
+                <span class="text-warning fw-bold" style="font-size: 0.82rem;">
+                  <i class="bi bi-calendar-event me-1"></i> October 2026
+                </span>
+                <a
+                  href="#scheduleDemoModal"
+                  data-bs-toggle="modal"
+                  data-bs-target="#scheduleDemoModal"
+                  class="btn btn-sm btn-outline-light rounded-pill px-3"
+                  style="font-size: 0.8rem; font-weight: 700;"
+                >
+                  Schedule Demo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         ANNOUNCEMENTS FEED SECTION WITH FILTERING
+         ========================================================================= -->
+    <section class="announcements-section" id="announcements-feed">
+      <div class="container">
+        
+        <!-- CATEGORY FILTER BAR -->
+        <div class="announcements-filter-bar">
+          <button type="button" class="announcement-filter-btn active" data-category="all">
+            All Updates <span class="badge bg-secondary ms-1 rounded-pill">6</span>
+          </button>
+          <button type="button" class="announcement-filter-btn" data-category="product">
+            Product Launches
+          </button>
+          <button type="button" class="announcement-filter-btn" data-category="platform">
+            Platform Updates
+          </button>
+          <button type="button" class="announcement-filter-btn" data-category="milestone">
+            Company Milestones
+          </button>
+          <button type="button" class="announcement-filter-btn" data-category="pilot">
+            Partnerships &amp; Pilots
+          </button>
+          <button type="button" class="announcement-filter-btn" data-category="event">
+            Events
+          </button>
+        </div>
+
+        <!-- FEATURED SPOTLIGHT ARTICLE -->
+        <article class="announcement-featured-card announcement-item" data-category="event product">
+          <div class="row g-0 align-items-stretch">
+            <div class="col-lg-5 position-relative">
+              <div class="h-100" style="min-height: 280px; background: #1f162b; overflow: hidden;">
+                <img
+                  src="/assets/energy-trading-week-americas-logo.png"
+                  alt="Energy Trading Week Americas 2026"
+                  class="w-100 h-100"
+                  style="object-fit: cover; object-position: center;"
+                >
+                <div class="announcement-badge-overlay">
+                  <span class="badge-announcement badge-announcement-event">
+                    <i class="bi bi-star-fill me-1"></i> Featured Event
+                  </span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-lg-7 d-flex flex-column justify-content-center p-4 p-md-5">
+              <div class="announcement-meta">
+                <span><i class="bi bi-calendar3 me-1"></i> October 27–28, 2026</span>
+                <span><i class="bi bi-geo-alt me-1"></i> Houston, Texas (Booth #20)</span>
+              </div>
+              
+              <h2 class="announcement-card-title" style="font-size: 1.65rem;">
+                BluWis Introduces TraWis at Energy Trading Week Americas 2026
+              </h2>
+              
+              <p class="announcement-card-desc">
+                BluWis officially debuts TraWis at North America's premier gathering of energy traders, risk managers, and technologists. Attendees are invited to experience live decision workflows for forward curve analysis, storage asset dispatch, and governed deal recommendation pipelines.
+              </p>
+
+              <ul class="announcement-highlights">
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>Live interactive walkthroughs at <strong>Booth #20</strong> with senior leadership.</span>
+                </li>
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>Deep-dive demonstrations of the 4 role-specific trading workspaces.</span>
+                </li>
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span>Enterprise pilot deployment consultation and early-access scheduling.</span>
+                </li>
+              </ul>
+
+              <div class="d-flex align-items-center gap-3 pt-2">
+                <a
+                  href="#scheduleDemoModal"
+                  data-bs-toggle="modal"
+                  data-bs-target="#scheduleDemoModal"
+                  class="btn btn-brand btn-sm px-4"
+                >
+                  Meet Us at Booth #20
+                </a>
+                <a href="/product" class="announcement-link">
+                  Explore TraWis Platform <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ANNOUNCEMENTS GRID FEED -->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="announcementsGrid">
+
+          <!-- CARD 1: PRODUCT LAUNCH FILM -->
+          <div class="col announcement-item" data-category="product">
+            <article class="announcement-card">
+              <div class="announcement-card-img-wrap">
+                <img
+                  src="/assets/traderpersona.jpeg"
+                  alt="TraWis Platform Launch Film"
+                  class="announcement-card-img"
+                  loading="lazy"
+                >
+                <div class="announcement-badge-overlay">
+                  <span class="badge-announcement badge-announcement-launch">
+                    <i class="bi bi-play-circle-fill me-1"></i> Product Launch
+                  </span>
+                </div>
+              </div>
+
+              <div class="announcement-card-body">
+                <div class="announcement-meta">
+                  <span><i class="bi bi-calendar3 me-1"></i> October 2026</span>
+                  <span><i class="bi bi-clock me-1"></i> 2 min read</span>
+                </div>
+
+                <h3 class="announcement-card-title">
+                  TraWis Platform Experience Film &amp; Live Showcase Unveiled
+                </h3>
+
+                <p class="announcement-card-desc">
+                  We've released our official launch film demonstrating how TraWis orchestrates complex market pricing, weather vectors, pipeline flows, and portfolio risk into decisive trading recommendations.
+                </p>
+
+                <ul class="announcement-highlights">
+                  <li><i class="bi bi-check-circle-fill"></i> 55-second comprehensive decision intelligence tour.</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Seamless multi-screen analytics terminal architecture.</li>
+                </ul>
+
+                <a href="/product" class="announcement-link">
+                  Watch on Product Page <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <!-- CARD 2: PLATFORM WORKSPACES -->
+          <div class="col announcement-item" data-category="platform">
+            <article class="announcement-card">
+              <div class="announcement-card-img-wrap">
+                <img
+                  src="/assets/Riskmanager.jpeg"
+                  alt="Four Specialized Workspaces"
+                  class="announcement-card-img"
+                  loading="lazy"
+                >
+                <div class="announcement-badge-overlay">
+                  <span class="badge-announcement badge-announcement-platform">
+                    <i class="bi bi-layers-fill me-1"></i> Platform Update
+                  </span>
+                </div>
+              </div>
+
+              <div class="announcement-card-body">
+                <div class="announcement-meta">
+                  <span><i class="bi bi-calendar3 me-1"></i> September 2026</span>
+                  <span><i class="bi bi-clock me-1"></i> 3 min read</span>
+                </div>
+
+                <h3 class="announcement-card-title">
+                  Dedicated Workspaces for Traders, Risk Managers, Schedulers &amp; Pricers
+                </h3>
+
+                <p class="announcement-card-desc">
+                  TraWis introduces tailored decision environments engineered for each energy trading discipline, ensuring teams share unified market truth with governed, persona-specific toolsets.
+                </p>
+
+                <ul class="announcement-highlights">
+                  <li><i class="bi bi-check-circle-fill"></i> Real-time VaR exposure and stress-testing for risk leads.</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Physical logistics, nomination, and nomination tracking for schedulers.</li>
+                </ul>
+
+                <a href="/product/solutions#workspaces" class="announcement-link">
+                  Explore Workspaces <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <!-- CARD 3: CTRM/ETRM INTEGRATION ENGINE -->
+          <div class="col announcement-item" data-category="platform">
+            <article class="announcement-card">
+              <div class="announcement-card-img-wrap">
+                <img
+                  src="/assets/Datacoreplatfrm.jpeg"
+                  alt="CTRM Integration Engine"
+                  class="announcement-card-img"
+                  loading="lazy"
+                >
+                <div class="announcement-badge-overlay">
+                  <span class="badge-announcement badge-announcement-platform">
+                    <i class="bi bi-cpu-fill me-1"></i> Platform Update
+                  </span>
+                </div>
+              </div>
+
+              <div class="announcement-card-body">
+                <div class="announcement-meta">
+                  <span><i class="bi bi-calendar3 me-1"></i> August 2026</span>
+                  <span><i class="bi bi-clock me-1"></i> 3 min read</span>
+                </div>
+
+                <h3 class="announcement-card-title">
+                  High-Throughput CTRM &amp; ETRM Integration Engine Released
+                </h3>
+
+                <p class="announcement-card-desc">
+                  Our new bi-directional integration layer connects legacy CTRM/ETRM platforms with TraWis predictive pricing and recommendation intelligence without displacing existing deal-capture databases.
+                </p>
+
+                <ul class="announcement-highlights">
+                  <li><i class="bi bi-check-circle-fill"></i> Prebuilt adapters for leading commercial trade engines.</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Sub-second pipeline synchronizations with audit trails.</li>
+                </ul>
+
+                <a href="/product/solutions" class="announcement-link">
+                  View Solutions Architecture <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <!-- CARD 4: ENTERPRISE PILOT PROGRAM -->
+          <div class="col announcement-item" data-category="pilot">
+            <article class="announcement-card">
+              <div class="announcement-card-img-wrap">
+                <img
+                  src="/assets/PricingInsightengine2.jpeg"
+                  alt="Enterprise Pilot Program"
+                  class="announcement-card-img"
+                  loading="lazy"
+                >
+                <div class="announcement-badge-overlay">
+                  <span class="badge-announcement badge-announcement-pilot">
+                    <i class="bi bi-rocket-takeoff-fill me-1"></i> Pilot Program
+                  </span>
+                </div>
+              </div>
+
+              <div class="announcement-card-body">
+                <div class="announcement-meta">
+                  <span><i class="bi bi-calendar3 me-1"></i> July 2026</span>
+                  <span><i class="bi bi-clock me-1"></i> 2 min read</span>
+                </div>
+
+                <h3 class="announcement-card-title">
+                  Enterprise Pilot Program Opened for Physical Energy Trading Desks
+                </h3>
+
+                <p class="announcement-card-desc">
+                  Select oil, natural gas, LNG, and power trading desks are invited to participate in guided 60-day pilot deployments to quantify margin expansion and risk reduction in production environments.
+                </p>
+
+                <ul class="announcement-highlights">
+                  <li><i class="bi bi-check-circle-fill"></i> Dedicated quantitative support from BluWis trade engineers.</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Custom forward-curve model tuning for proprietary delivery points.</li>
+                </ul>
+
+                <a
+                  href="#scheduleDemoModal"
+                  data-bs-toggle="modal"
+                  data-bs-target="#scheduleDemoModal"
+                  class="announcement-link"
+                >
+                  Apply for Pilot Access <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <!-- CARD 5: LEADERSHIP MILESTONE -->
+          <div class="col announcement-item" data-category="milestone">
+            <article class="announcement-card">
+              <div class="announcement-card-img-wrap">
+                <img
+                  src="/assets/about-hero.png"
+                  alt="Company Milestones"
+                  class="announcement-card-img"
+                  loading="lazy"
+                >
+                <div class="announcement-badge-overlay">
+                  <span class="badge-announcement badge-announcement-milestone">
+                    <i class="bi bi-award-fill me-1"></i> Milestone
+                  </span>
+                </div>
+              </div>
+
+              <div class="announcement-card-body">
+                <div class="announcement-meta">
+                  <span><i class="bi bi-calendar3 me-1"></i> June 2026</span>
+                  <span><i class="bi bi-clock me-1"></i> 2 min read</span>
+                </div>
+
+                <h3 class="announcement-card-title">
+                  BluWis Expands Quantitative Trading Desk &amp; Energy Intelligence Advisory
+                </h3>
+
+                <p class="announcement-card-desc">
+                  To accelerate AI agent innovation across physical energy derivatives, BluWis welcomes key hires with decades of trade floor experience across global commodities majors and quantitative hedge funds.
+                </p>
+
+                <ul class="announcement-highlights">
+                  <li><i class="bi bi-check-circle-fill"></i> Expansion across North American and European energy hubs.</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Accelerated R&amp;D in multimodal weather and supply risk modeling.</li>
+                </ul>
+
+                <a href="/leadership" class="announcement-link">
+                  Meet Our Leadership <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <!-- CARD 6: PREDICTIVE PRICING ENGINE -->
+          <div class="col announcement-item" data-category="platform product">
+            <article class="announcement-card">
+              <div class="announcement-card-img-wrap">
+                <img
+                  src="/assets/analysisterminal.jpeg"
+                  alt="Predictive Pricing Interface"
+                  class="announcement-card-img"
+                  loading="lazy"
+                >
+                <div class="announcement-badge-overlay">
+                  <span class="badge-announcement badge-announcement-platform">
+                    <i class="bi bi-graph-up-arrow me-1"></i> Feature Release
+                  </span>
+                </div>
+              </div>
+
+              <div class="announcement-card-body">
+                <div class="announcement-meta">
+                  <span><i class="bi bi-calendar3 me-1"></i> May 2026</span>
+                  <span><i class="bi bi-clock me-1"></i> 3 min read</span>
+                </div>
+
+                <h3 class="announcement-card-title">
+                  Agentic AI Pricing Forecast Matrix: Multimodal Market Forecasting
+                </h3>
+
+                <p class="announcement-card-desc">
+                  TraWis deploys advanced agentic ensembles that blend historical price curves with live pipeline scada signals, vessel AIS tracking, and geopolitical volatility indices to deliver real-time forward projections.
+                </p>
+
+                <ul class="announcement-highlights">
+                  <li><i class="bi bi-check-circle-fill"></i> Granular confidence bands and scenario simulations.</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Automated alert dispatch for basis spread dislocations.</li>
+                </ul>
+
+                <a href="/product/platform" class="announcement-link">
+                  Explore Pricing Architecture <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </article>
+          </div>
+
+        </div>
+
+        <!-- STAY CONNECTED / SCHEDULE CTA BOX -->
+        <div class="announcements-cta-box text-center text-lg-start">
+          <div class="row align-items-center gy-4">
+            <div class="col-lg-8">
+              <span class="badge-announcement badge-announcement-milestone mb-2">
+                <i class="bi bi-lightning-charge-fill me-1"></i> Direct Inquiries
+              </span>
+              <h3 class="font-heading fw-bold text-white mb-2" style="font-size: 1.85rem;">
+                Stay Ahead of Energy Market Disruption
+              </h3>
+              <p class="text-white-70 mb-0" style="max-width: 620px; font-size: 0.96rem; line-height: 1.6;">
+                Interested in testing TraWis on your trading desk, partnering on pilot deployments, or receiving customized product updates? Our energy intelligence team is here to help.
+              </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+              <div class="d-flex flex-column flex-sm-row justify-content-lg-end gap-3">
+                <button
+                  type="button"
+                  class="btn btn-brand btn-lg"
+                  data-bs-toggle="modal"
+                  data-bs-target="#scheduleDemoModal"
+                >
+                  Schedule a Demo
+                </button>
+                <a href="/contact" class="btn btn-ghost btn-lg">
+                  Contact Us
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- SCHEDULE A DEMO MODAL -->
+  <%- include('partials/schedule-demo-modal') %>
+
+  <%- include('partials/footer') %>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/app.js"></script>
+
+  <!-- ANNOUNCEMENTS CATEGORY FILTER SCRIPT -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const filterButtons = document.querySelectorAll(".announcement-filter-btn");
+      const items = document.querySelectorAll(".announcement-item");
+
+      filterButtons.forEach(button => {
+        button.addEventListener("click", function() {
+          const category = this.getAttribute("data-category");
+
+          filterButtons.forEach(btn => btn.classList.remove("active"));
+          this.classList.add("active");
+
+          items.forEach(item => {
+            const itemCategories = item.getAttribute("data-category") || "";
+            if (category === "all" || itemCategories.includes(category)) {
+              item.style.display = "";
+              item.classList.add("animate-up");
+            } else {
+              item.style.display = "none";
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
