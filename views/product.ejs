@@ -26,8 +26,15 @@
             </p>
 
             <div class="hero-actions animate-up delay-3">
-              <a href="/demo" class="btn btn-brand btn-lg">Schedule a Demo</a>
-              <a href="#product-stack" class="btn btn-ghost btn-lg">See How It Works</a>
+              <a
+                href="#scheduleDemoModal"
+                data-bs-toggle="modal"
+                data-bs-target="#scheduleDemoModal"
+                class="btn btn-brand btn-lg"
+              >
+                Schedule a Demo
+              </a>
+              <a href="#product-stack" class="btn btn-ghost btn-lg">Explore the Platform</a>
             </div>
           </div>
 
@@ -761,10 +768,20 @@
             </p>
           </div>
 
-          <a href="/demo" class="btn btn-brand btn-lg">Schedule a Demo</a>
+          <a
+            href="#scheduleDemoModal"
+            data-bs-toggle="modal"
+            data-bs-target="#scheduleDemoModal"
+            class="btn btn-brand btn-lg"
+          >
+            Schedule a Demo
+          </a>
         </div>
       </div>
     </section>
+
+    <!-- SCHEDULE A DEMO MODAL -->
+    <%- include('partials/schedule-demo-modal') %>
   </main>
 
   <%- include('partials/footer') %>

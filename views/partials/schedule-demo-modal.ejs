@@ -1,0 +1,275 @@
+    <!-- =========================================================================
+         IN-PLACE GLASSMORPHIC MODAL: SCHEDULE A DEMO (TRAWIS BY BLUWIS)
+         ========================================================================= -->
+    <div
+      class="modal fade glassmorphic-modal"
+      id="scheduleDemoModal"
+      tabindex="-1"
+      aria-labelledby="scheduleDemoModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content glassmorphic-modal-content">
+          <!-- MODAL HEADER -->
+          <div class="modal-header border-0 pb-0 d-flex justify-content-between align-items-start">
+            <div id="demoModalHeaderContent">
+              <div class="modal-badge-tag mb-2">
+                <i class="bi bi-display me-1"></i> TraWis by BluWis
+              </div>
+              <h3 class="modal-title font-heading fw-bold text-white text-uppercase" id="scheduleDemoModalLabel" style="letter-spacing: -0.01em;">
+                SCHEDULE A DEMO WITH TRAWIS BY BLUWIS
+              </h3>
+              <p class="modal-subtitle mb-0">
+                Let’s Talk About The Future Of Trade Intelligence. Reach out to discuss TraWis, product demos, pilot opportunities, pricing, platform questions, or enterprise trading use cases.
+              </p>
+            </div>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <!-- MODAL BODY -->
+          <div class="modal-body pt-4">
+            <!-- FORM CONTAINER -->
+            <div id="demoFormContainer">
+              <form id="scheduleDemoForm" novalidate>
+                <input type="hidden" name="eventSource" value="Demo Request - TraWis by BluWis">
+
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="demoName" class="form-label-glass">Full Name <span class="text-warning">*</span></label>
+                    <input
+                      type="text"
+                      class="form-control form-control-glass"
+                      id="demoName"
+                      name="name"
+                      placeholder="e.g. Alex Morgan"
+                      required
+                    >
+                    <div class="invalid-feedback">Please provide your full name.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="demoCompany" class="form-label-glass">Company <span class="text-warning">*</span></label>
+                    <input
+                      type="text"
+                      class="form-control form-control-glass"
+                      id="demoCompany"
+                      name="company"
+                      placeholder="e.g. Trafigura / BP / Vitol"
+                      required
+                    >
+                    <div class="invalid-feedback">Please provide your company name.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="demoJobTitle" class="form-label-glass">Job Title / Role <span class="text-warning">*</span></label>
+                    <input
+                      type="text"
+                      class="form-control form-control-glass"
+                      id="demoJobTitle"
+                      name="jobTitle"
+                      placeholder="e.g. Head of Gas Trading, Risk Lead"
+                      required
+                    >
+                    <div class="invalid-feedback">Please provide your role or job title.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="demoEmail" class="form-label-glass">Work Email <span class="text-warning">*</span></label>
+                    <input
+                      type="email"
+                      class="form-control form-control-glass"
+                      id="demoEmail"
+                      name="email"
+                      placeholder="e.g. alex.morgan@company.com"
+                      pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                      autocomplete="email"
+                      required
+                    >
+                    <div class="invalid-feedback" id="demoEmailFeedback">Please provide a valid work email address (e.g. name@company.com).</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label for="demoPhone" class="form-label-glass">Phone Number <span class="text-warning">*</span></label>
+                    <div class="input-group phone-input-group">
+                      <select
+                        class="form-select form-control-glass country-code-select"
+                        id="demoCountryCode"
+                        name="countryCode"
+                        aria-label="Country Code"
+                        required
+                      >
+                        <option value="+1" selected>🇺🇸 +1 (US)</option>
+                        <option value="+1">🇨🇦 +1 (CA)</option>
+                        <option value="+44">🇬🇧 +44 (UK)</option>
+                        <option value="+91">🇮🇳 +91 (IN)</option>
+                        <option value="+65">🇸🇬 +65 (SG)</option>
+                        <option value="+971">🇦🇪 +971 (UAE)</option>
+                        <option value="+41">🇨🇭 +41 (CH)</option>
+                        <option value="+31">🇳🇱 +31 (NL)</option>
+                        <option value="+49">🇩🇪 +49 (DE)</option>
+                        <option value="+33">🇫🇷 +33 (FR)</option>
+                        <option value="+81">🇯🇵 +81 (JP)</option>
+                        <option value="+61">🇦🇺 +61 (AU)</option>
+                        <option value="+55">🇧🇷 +55 (BR)</option>
+                        <option value="+52">🇲🇽 +52 (MX)</option>
+                        <option value="+966">🇸🇦 +966 (SA)</option>
+                        <option value="+974">🇶🇦 +974 (QA)</option>
+                        <option value="+86">🇨🇳 +86 (CN)</option>
+                        <option value="+852">🇭🇰 +852 (HK)</option>
+                        <option value="+34">🇪🇸 +34 (ES)</option>
+                        <option value="+39">🇮🇹 +39 (IT)</option>
+                        <option value="+47">🇳🇴 +47 (NO)</option>
+                        <option value="+27">🇿🇦 +27 (ZA)</option>
+                        <option value="+234">🇳🇬 +234 (NG)</option>
+                        <option value="+351">🇵🇹 +351 (PT)</option>
+                        <option value="+353">🇮🇪 +353 (IE)</option>
+                        <option value="+46">🇸🇪 +46 (SE)</option>
+                        <option value="+45">🇩🇰 +45 (DK)</option>
+                        <option value="+32">🇧🇪 +32 (BE)</option>
+                        <option value="+43">🇦🇹 +43 (AT)</option>
+                        <option value="+48">🇵🇱 +48 (PL)</option>
+                        <option value="+90">🇹🇷 +90 (TR)</option>
+                        <option value="+20">🇪🇬 +20 (EG)</option>
+                        <option value="+60">🇲🇾 +60 (MY)</option>
+                        <option value="+62">🇮🇩 +62 (ID)</option>
+                        <option value="+82">🇰🇷 +82 (KR)</option>
+                        <option value="+64">🇳🇿 +64 (NZ)</option>
+                      </select>
+                      <input
+                        type="tel"
+                        class="form-control form-control-glass phone-number-input"
+                        id="demoPhone"
+                        name="phoneNumber"
+                        placeholder="10-digit number (e.g. 7135550199)"
+                        pattern="^[0-9]{10}$"
+                        minlength="10"
+                        maxlength="10"
+                        inputmode="numeric"
+                        autocomplete="tel-national"
+                        required
+                      >
+                      <div class="invalid-feedback" id="demoPhoneFeedback">Please provide a strictly 10-digit phone number.</div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="demoTimeline" class="form-label-glass">
+                      Preferred Timeline <span class="text-warning">*</span>
+                    </label>
+                    <select
+                      class="form-select form-control-glass"
+                      id="demoTimeline"
+                      name="preferredDate"
+                      required
+                    >
+                      <option value="" disabled selected>Select Timeline</option>
+                      <option value="As soon as possible">As soon as possible</option>
+                      <option value="Within 1 week">Within 1 week</option>
+                      <option value="Within 2 weeks">Within 2 weeks</option>
+                      <option value="Within this month">Within this month</option>
+                      <option value="Flexible / Exploring">Flexible / Exploring</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a preferred timeline.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="demoTimeSlot" class="form-label-glass">
+                      Preferred Time Slot <span class="text-warning">*</span>
+                    </label>
+                    <select
+                      class="form-select form-control-glass"
+                      id="demoTimeSlot"
+                      name="preferredTimeSlot"
+                      required
+                    >
+                      <option value="" disabled selected>Select Time Slot</option>
+                      <option value="Morning (09:00 AM – 12:00 PM)">Morning (09:00 AM – 12:00 PM)</option>
+                      <option value="Afternoon (01:00 PM – 04:00 PM)">Afternoon (01:00 PM – 04:00 PM)</option>
+                      <option value="Late Afternoon (04:00 PM – 06:00 PM)">Late Afternoon (04:00 PM – 06:00 PM)</option>
+                      <option value="Flexible (Any Time)">Flexible (Any Time)</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a time slot.</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label for="demoInterest" class="form-label-glass">
+                      Primary Focus / Use Case
+                    </label>
+                    <select
+                      class="form-select form-control-glass"
+                      id="demoInterest"
+                      name="interest"
+                    >
+                      <option value="" selected>Select Focus (Optional)</option>
+                      <option value="Full TraWis Platform Overview">Full TraWis Platform Overview</option>
+                      <option value="Trader Workspace & Physical / Financial Decision Support">Trader Workspace &amp; Physical / Financial Decision Support</option>
+                      <option value="Risk Manager Workspace & Exposure Hedging">Risk Manager Workspace &amp; Exposure Hedging</option>
+                      <option value="Scheduler & Logistics Flow Intelligence">Scheduler &amp; Logistics Flow Intelligence</option>
+                      <option value="Pricer & Margin Deal Intelligence">Pricer &amp; Margin Deal Intelligence</option>
+                      <option value="Enterprise CTRM / ETRM Integration">Enterprise CTRM / ETRM Integration</option>
+                      <option value="Pilot Deployment Program">Pilot Deployment Program</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- ALERT STATUS -->
+                <div id="demoFormStatus" class="alert d-none mt-3 mb-0" role="alert"></div>
+
+                <!-- SUBMIT BUTTON -->
+                <div class="mt-4">
+                  <button
+                    type="submit"
+                    id="btnSubmitDemo"
+                    class="btn btn-hero-pill-primary w-100 py-3 d-flex align-items-center justify-content-center gap-2"
+                  >
+                    <span class="btn-text">Confirm &amp; Schedule Demo</span>
+                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                    <i class="bi bi-arrow-right"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- SUCCESS STATE -->
+            <div id="demoSuccessContainer" class="d-none text-center py-4 px-2 animate-up">
+              <div class="success-icon-wrap mb-3">
+                <i class="bi bi-check-circle-fill text-warning" style="font-size: 3.8rem;"></i>
+              </div>
+              <div class="modal-badge-tag mb-3">
+                <i class="bi bi-calendar-check me-1"></i> TraWis by BluWis
+              </div>
+              <h3 class="font-heading fw-bold text-white mb-3" style="font-size: 1.85rem; letter-spacing: -0.02em;">
+                Demo Request Confirmed!
+              </h3>
+              
+              <div class="success-details-card mb-4 mx-auto p-4 rounded-4 text-center">
+                <p class="success-lead-highlight mb-3">
+                  Thank you, <span id="demoSuccessLeadName" class="text-white fw-bold"></span>! Your demo request has been dispatched directly to
+                  <span class="text-warning fw-bold">sales@bluwis.com</span>.
+                </p>
+                <p class="success-lead-subtext mb-0">
+                  A representative from the BluWis &amp; TraWis team will follow up at
+                  <span id="demoSuccessLeadEmail" class="text-white fw-bold"></span> to coordinate calendar availability and demo logistics.
+                </p>
+              </div>
+
+              <div class="d-flex justify-content-center gap-3">
+                <button
+                  type="button"
+                  class="btn btn-hero-pill-primary px-5 py-2"
+                  data-bs-dismiss="modal"
+                  style="min-width: 180px;"
+                >
+                  Close Window
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

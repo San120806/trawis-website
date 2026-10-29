@@ -27,7 +27,14 @@
             </p>
 
             <div class="hero-actions animate-up delay-3">
-              <a href="/demo" class="btn btn-brand btn-lg">Schedule a Demo</a>
+              <a
+                href="#scheduleDemoModal"
+                data-bs-toggle="modal"
+                data-bs-target="#scheduleDemoModal"
+                class="btn btn-brand btn-lg"
+              >
+                Schedule a Demo
+              </a>
               <a href="#workspaces" class="btn btn-ghost btn-lg">Explore Workspaces</a>
             </div>
           </div>
@@ -442,12 +449,23 @@
               See how TraWis helps trading teams move from fragmented information
               to coordinated, intelligent action.
             </p>
-            <br><a href="/demo" class="btn btn-brand btn-lg">Schedule a Demo</a>
+            <br>
+            <a
+              href="#scheduleDemoModal"
+              data-bs-toggle="modal"
+              data-bs-target="#scheduleDemoModal"
+              class="btn btn-brand btn-lg"
+            >
+              Schedule a Demo
+            </a>
           </div>
 
         </div>
       </div>
     </section>
+
+    <!-- SCHEDULE A DEMO MODAL -->
+    <%- include('partials/schedule-demo-modal') %>
   </main>
 
   <%- include('partials/footer') %>
